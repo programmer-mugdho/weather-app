@@ -2,9 +2,9 @@ let long; let lat;
 let temperatureDegree = document.querySelector('.temperature-degree')
 let temperatureDescription = document.querySelector('.temperature-description')
 let imgLink = "https://openweathermap.org/img/wn/02d@2x.png"
-const proxy = 'http://cors-anywhere.herokuapp.com/';
+// const proxy = 'http://cors-anywhere.herokuapp.com/';
 
-function fetchData(api){
+function fetchData(api) {
     fetch(api)
         .then(response => response.json())
         .then(data => {
@@ -29,7 +29,7 @@ if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
         long = position.coords.longitude;
         lat = position.coords.latitude;
-        const api = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d5c36499bdb208018abbae3b33746db6`
+        const api = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d5c36499bdb208018abbae3b33746db6`
         fetchData(api);
     })
 }
@@ -37,8 +37,8 @@ if (navigator.geolocation) {
 document.getElementById('search').addEventListener('click', function (event) {
     event.preventDefault()
     const cityName = document.getElementById('cityName').value;
-    const api = `${proxy}api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=d5c36499bdb208018abbae3b33746db6`
+    const api = `api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=d5c36499bdb208018abbae3b33746db6`
     // console.log(api);
     fetchData(api);
-    document.getElementById('cityName').value = ''  ;
+    document.getElementById('cityName').value = '';
 })
