@@ -29,7 +29,7 @@ if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
         long = position.coords.longitude;
         lat = position.coords.latitude;
-        const api = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d5c36499bdb208018abbae3b33746db6`
+        const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d5c36499bdb208018abbae3b33746db6`
         fetchData(api);
     })
 }
@@ -37,7 +37,7 @@ if (navigator.geolocation) {
 document.getElementById('search').addEventListener('click', function (event) {
     event.preventDefault()
     const cityName = document.getElementById('cityName').value;
-    const api = `api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=d5c36499bdb208018abbae3b33746db6`
+    const api = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=d5c36499bdb208018abbae3b33746db6`
     // console.log(api);
     fetchData(api);
     document.getElementById('cityName').value = '';
